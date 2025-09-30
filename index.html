@@ -47,9 +47,9 @@
             <button id="checkout-btn" class="checkout-btn">Continuar con el pago</button>
         </div>
     </div>
-    <div id="newsletter-modal" class="newsletter-modal" style="display:none;">
-      <div class="newsletter-content">
-        <span class="newsletter-close" id="newsletter-close">&times;</span>
+    <div id="trivia-modal" class="trivia-modal" style="display:none;">
+      <div class="trivia-content">
+        <span class="trivia-close" id="trivia-close">&times;</span>
         <h2>El próximo álbum te llevará a la playita</h2>
         <p>veamos si estás preparado 👀</p>
         <div id="trivia-container"></div>
@@ -98,8 +98,8 @@
       productosSection.style.display = 'none';
     });
     window.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('newsletter-modal');
-      const closeBtn = document.getElementById('newsletter-close');
+      const modal = document.getElementById('trivia-modal');
+      const closeBtn = document.getElementById('trivia-close');
       setTimeout(() => { modal.style.display = 'flex'; }, 600);
       closeBtn.onclick = () => { modal.style.display = 'none'; };
       modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
