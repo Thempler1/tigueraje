@@ -16,21 +16,16 @@
         </ul>
     </nav>
     <main id="home">
-        <!-- Sección de trivia -->
-        <div class="trivia-section" id="trivia-section">
-            <h1>Solo para Tigueressss 🐅</h1>
-            <div id="trivia-container"></div>
-        </div>
         <!-- Video de YouTube embebido -->
         <div class="youtube-responsive" style="text-align:center; margin:2rem 0;">
             <iframe width="360" height="215" src="https://www.youtube.com/embed/rSxuM618lFc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <!-- Sección del flyer del evento -->
-        <h1>Próximos eventos</h1>
+        <!--<h1>Próximos eventos</h1>
         <div class="flyer-section">
             <h1>Disfruta del disco en vivo y en directo</h1>
             <img src="flyer-evento.jpg" alt="Flyer del evento" class="flyer-img">
-        </div>
+        </div>-->
         <!-- Sección de productos -->
         <section id="productos" style="display:none;">
             <h1>Productos</h1>
@@ -51,6 +46,14 @@
             </div>
             <button id="checkout-btn" class="checkout-btn">Continuar con el pago</button>
         </div>
+    </div>
+    <div id="newsletter-modal" class="newsletter-modal" style="display:none;">
+      <div class="newsletter-content">
+        <span class="newsletter-close" id="newsletter-close">&times;</span>
+        <h2>El próximo álbum te llevará a la playita</h2>
+        <p>veamos si estás preparado 👀</p>
+        <div id="trivia-container"></div>
+      </div>
     </div>
     <script src="script.js"></script>
     <script>
@@ -75,6 +78,13 @@
         if(child !== productosSection) child.style.display = '';
       });
       productosSection.style.display = 'none';
+    });
+    window.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('newsletter-modal');
+      const closeBtn = document.getElementById('newsletter-close');
+      setTimeout(() => { modal.style.display = 'flex'; }, 600);
+      closeBtn.onclick = () => { modal.style.display = 'none'; };
+      modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
     });
     </script>
 </body>

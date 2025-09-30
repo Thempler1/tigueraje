@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "12. aterrizaje d emergencia"
             ];
             const randomIndex = Math.floor(Math.random() * pollAnswers.length);
-            triviaContainer.innerHTML = `<div class=\"trivia-end\"><div style=\"margin-bottom:0.7rem;font-weight:500;color:#2196f3;\">Tu canción es...</div>${pollAnswers[randomIndex]}</div>`;
+            triviaContainer.innerHTML = `<div class=\"trivia-end\"><div style=\"margin-bottom:0.7rem;font-weight:500;color:#2196f3;\">Tu canción será</div>${pollAnswers[randomIndex]}</div>`;
         }
     }
 
