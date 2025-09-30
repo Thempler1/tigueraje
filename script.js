@@ -2,16 +2,16 @@ const products = [
     {
         id: 1,
         title: "Gomitas sabor Walu",
-        price: 5200,
-        discount: 0.9,
+        price: 2990,
+        discount: 0.0,
         image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
         stock: 0
     },
     {
         id: 2,
         title: "Gomitas Tigueraje",
-        price: 5590,
-        discount: 0.9,
+        price: 2990,
+        discount: 0.0,
         image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
         stock: 0
     },
@@ -20,7 +20,7 @@ const products = [
         title: "Entradas para : \"Los tigueres lloran, sienten y mienten\"",
         price: 12500,
         discount: 0.2,
-        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+        image: "https://drive.google.com/u/0/drive-viewer/AKGpihbW_fZ699fX6rMwLcvPztklRWhmYf1wWW11fwBg5KERoFZhqqVbmaZKSeliquCgIghi3QCQSzW_kcyd3rqaP1_CpQtf737NUQE=s1600-rw-v1",
         stock: 1
     }
 ];
