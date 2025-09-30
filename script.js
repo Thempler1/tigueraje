@@ -16,14 +16,6 @@ const products = [
         stock: 0
     },
     {
-        id: 3,
-        title: "Polera Tigueraje",
-        price: 15000,
-        discount: 0.9,
-        image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-        stock: 0
-    },
-    {
         id: 4,
         title: "Entradas para : \"Los tigueres lloran, sienten y mienten\"",
         price: 12500,
