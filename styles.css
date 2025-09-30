@@ -1,6 +1,6 @@
 /* Sección de trivia (solo para modal, no estilos de layout externo) */
 .trivia-section h1 {
-    color: #2196f3;
+  color: #f5a946ff;
     margin-bottom: 1rem;
     font-size: 1.3rem;
     text-align: center;
@@ -17,7 +17,7 @@
     margin-top: 1rem;
 }
 .trivia-btn {
-    background: #2196f3;
+  background: #f5a946ff;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -27,10 +27,10 @@
     transition: background 0.2s;
 }
 .trivia-btn:hover {
-    background: #1565c0;
+  background: #f4752cff;
 }
 .trivia-end {
-    color: #2196f3;
+  color: #f5a946ff;
     font-size: 1.1rem;
     text-align: center;
     margin-top: 1rem;
@@ -63,7 +63,7 @@
     align-items: center;
 }
 .flyer-section h1 {
-    color: #2196f3;
+    color: #f4752cff;
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -80,11 +80,11 @@
     transition: background 0.2s;
 }
 .remove-from-cart:hover {
-    background: #2196f3;
+  background: #f5a946ff;
 }
 /* Botón de checkout */
 .checkout-btn {
-    background: #2196f3;
+    background: #f5a946ff;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -97,7 +97,7 @@
     width: 100%;
 }
 .checkout-btn:hover {
-    background: #1565c0;
+  background: #f4752cff;
 }
 body {
   background: #181a20;
@@ -130,7 +130,7 @@ main {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2196f3;
+    color: #f5a946ff;
 }
 .nav-links {
     list-style: none;
@@ -147,7 +147,7 @@ main {
     transition: color 0.2s;
 }
 .nav-links a:hover {
-    color: #2196f3;
+    color: #f5a946ff;
 }
 main {
     padding: 2rem;
@@ -168,7 +168,7 @@ main {
     transition: box-shadow 0.2s;
 }
 .product:hover {
-    box-shadow: 0 4px 16px rgba(33,150,243,0.18);
+    box-shadow: 0 4px 16px rgba(243, 194, 33, 0.18);
 }
 .product img {
     width: 120px;
@@ -185,7 +185,7 @@ main {
 .product-title {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
-    color: #2196f3;
+    color: #f5a946ff;
 }
 .product-prices {
     display: flex;
@@ -205,12 +205,12 @@ main {
     font-weight: bold;
 }
 .discount-percent {
-    color: #2196f3;
+    color: #f4752cff;
     font-size: 0.95rem;
     font-weight: 500;
 }
 .add-to-cart {
-    background: #2196f3;
+  background: #f5a946ff;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -220,7 +220,7 @@ main {
     transition: background 0.2s;
 }
 .add-to-cart:hover {
-    background: #1565c0;
+  background: #f4752cff;
 }
 .out-of-stock {
   color: #ff5252;
@@ -250,7 +250,7 @@ main {
     min-width: 320px;
     max-width: 90vw;
     color: #e0e6ed;
-    box-shadow: 0 4px 24px rgba(33,150,243,0.18);
+    box-shadow: 0 4px 16px rgba(243, 194, 33, 0.18);
     position: relative;
 }
 .close {
@@ -259,12 +259,12 @@ main {
     right: 1rem;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #2196f3;
+  color: #f5a946ff;
 }
 .cart-total {
     margin-top: 1.5rem;
     font-size: 1.2rem;
-    color: #2196f3;
+  color: #f5a946ff;
 }
 .youtube-responsive {
   position: relative;
@@ -341,7 +341,7 @@ main {
   min-width: 320px;
   max-width: 90vw;
   color: #e0e6ed;
-  box-shadow: 0 4px 24px rgba(33,150,243,0.18);
+  box-shadow: 0 4px 16px rgba(243, 194, 33, 0.18);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -353,7 +353,7 @@ main {
   right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #2196f3;
+  color: #f5a946ff;
 }
 .trivia-input {
   margin: 1rem 0 0.5rem 0;
@@ -365,7 +365,7 @@ main {
   font-size: 1rem;
 }
 .trivia-btn {
-  background: #2196f3;
+  background: #f5a946ff;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -377,7 +377,7 @@ main {
   transition: background 0.2s;
 }
 .trivia-btn:hover {
-  background: #1565c0;
+  background: #f4752cff;
 }
 @media (max-width: 600px) {
   .trivia-content {
@@ -405,11 +405,11 @@ main {
   min-width: 180px;
 }
 .footer-section h3, .footer-section h4 {
-  color: #2196f3;
+  color: #f5a946ff;
   margin-bottom: 0.5rem;
 }
 .footer-designer {
-  color: #2196f3;
+  color: #f5a946ff;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -421,12 +421,12 @@ main {
   margin-top: 1rem;
 }
 .footer a {
-  color: #2196f3;
+  color: #f5a946ff;
   text-decoration: underline;
   transition: color 0.2s;
 }
 .footer a:hover {
-  color: #1565c0;
+  color: #f4752cff;
 }
 
 @media (max-width: 900px) {
