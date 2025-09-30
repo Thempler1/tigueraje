@@ -4,28 +4,32 @@ const products = [
         title: "Gomitas sabor Walu",
         price: 5200,
         discount: 0.9,
-        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+        stock: 0
     },
     {
         id: 2,
         title: "Gomitas Tigueraje",
         price: 5590,
         discount: 0.9,
-        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
+        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+        stock: 0
     },
     {
         id: 3,
         title: "Polera Tigueraje",
         price: 15000,
         discount: 0.9,
-        image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+        image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+        stock: 0
     },
     {
         id: 4,
-        title: "Caja sorpensa Walu",
-        price: 25000,
-        discount: 0.9,
-        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+        title: "Entradas para : \"Los tigueres lloran, sienten y mienten\"",
+        price: 12500,
+        discount: 0.2,
+        image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+        stock: 1
     }
 ];
 
@@ -41,15 +45,34 @@ function renderProducts() {
         const formatCLP = n => n.toLocaleString('es-CL');
         const div = document.createElement('div');
         div.className = 'product';
-        div.innerHTML = `
-            <img src="${product.image}" alt="${product.title}">
-            <div class="product-title">${product.title}</div>
-            <div class="product-prices">
+        let stockHtml = '';
+        let buttonHtml = '';
+        let pricesHtml = '';
+        let imgClass = '';
+        if (discountPercent > 0) {
+            pricesHtml = `
                 <span class="original-price">$${formatCLP(product.price)}</span>
                 <span class="discounted-price">$${formatCLP(discountedPrice)}</span>
                 <span class="discount-percent">-${discountPercent}%</span>
+            `;
+        } else {
+            pricesHtml = `<span class="discounted-price">$${formatCLP(product.price)}</span>`;
+        }
+        if (product.stock === 0) {
+            stockHtml = '<div class="out-of-stock">Sin stock</div>';
+            buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Agregar al carrito</button>';
+            imgClass = 'out-of-stock-img';
+        } else {
+            buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '">Agregar al carrito</button>';
+        }
+        div.innerHTML = `
+            <img src="${product.image}" alt="${product.title}" class="${imgClass}">
+            <div class="product-title">${product.title}</div>
+            <div class="product-prices">
+                ${pricesHtml}
             </div>
-            <button class="add-to-cart" data-id="${product.id}">Agregar al carrito</button>
+            ${stockHtml}
+            ${buttonHtml}
         `;
         list.appendChild(div);
     });

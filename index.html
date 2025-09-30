@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🐯Tigeraje</title>
+    <title>🐯 Tigeraje Web</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,15 +11,19 @@
         <div class="logo">Tigeraje Web 🐯</div>
         <ul class="nav-links">
             <li><a href="#home">Inicio</a></li>
+            <li><a href="#productos" id="productos-btn">Productos</a></li>
             <li><a href="#cart" id="cart-btn">🛒Carrito (<span id="cart-count">0</span>)</a></li>
         </ul>
     </nav>
     <main id="home">
-        
         <!-- Sección de trivia -->
         <div class="trivia-section" id="trivia-section">
             <h1>Solo para Tigueressss 🐅</h1>
             <div id="trivia-container"></div>
+        </div>
+        <!-- Video de YouTube embebido -->
+        <div class="youtube-responsive" style="text-align:center; margin:2rem 0;">
+            <iframe width="360" height="215" src="https://www.youtube.com/embed/rSxuM618lFc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <!-- Sección del flyer del evento -->
         <h1>Próximos eventos</h1>
@@ -28,10 +32,12 @@
             <img src="flyer-evento.jpg" alt="Flyer del evento" class="flyer-img">
         </div>
         <!-- Sección de productos -->
-        <h1>Productos</h1>
-        <div class="product-list" id="product-list">
-            <!-- Productos se renderizan aquí -->
-        </div>
+        <section id="productos" style="display:none;">
+            <h1>Productos</h1>
+            <div class="product-list" id="product-list">
+                <!-- Productos se renderizan aquí -->
+            </div>
+        </section>
     </main>
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
@@ -47,5 +53,29 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+    // Mostrar/Ocultar sección productos
+    const productosBtn = document.getElementById('productos-btn');
+    const productosSection = document.getElementById('productos');
+    const mainHome = document.getElementById('home');
+
+    productosBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Oculta todo menos productos
+      Array.from(mainHome.children).forEach(child => {
+        if(child !== productosSection) child.style.display = 'none';
+      });
+      productosSection.style.display = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    // Al hacer click en Inicio, mostrar todo menos productos
+    const inicioBtn = document.querySelector('.nav-links a[href="#home"]');
+    inicioBtn.addEventListener('click', function(e) {
+      Array.from(mainHome.children).forEach(child => {
+        if(child !== productosSection) child.style.display = '';
+      });
+      productosSection.style.display = 'none';
+    });
+    </script>
 </body>
 </html>
