@@ -4,7 +4,7 @@ const products = [
         title: "Gomitas sabor Walu",
         price: 2990,
         discount: 0.0,
-        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80",
+        image: "gomitas-walu.png",
         stock: 0
     },
     {
@@ -12,15 +12,15 @@ const products = [
         title: "Gomitas Tigueraje",
         price: 2990,
         discount: 0.0,
-        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+        image: "gomitas-tigueraje.png",
         stock: 0
     },
     {
         id: 4,
         title: "Entradas para : \"Los tigueres lloran, sienten y mienten\"",
-        price: 12500,
-        discount: 0.2,
-        image: "https://drive.google.com/u/0/drive-viewer/AKGpihbW_fZ699fX6rMwLcvPztklRWhmYf1wWW11fwBg5KERoFZhqqVbmaZKSeliquCgIghi3QCQSzW_kcyd3rqaP1_CpQtf737NUQE=s1600-rw-v1",
+        price: 0,
+        discount: 0.0,
+        image: "walu-concert.png",
         stock: 1
     }
 ];
@@ -41,7 +41,9 @@ function renderProducts() {
         let buttonHtml = '';
         let pricesHtml = '';
         let imgClass = '';
-        if (discountPercent > 0) {
+        if (product.price === 0) {
+            pricesHtml = '';
+        } else if (discountPercent > 0) {
             pricesHtml = `
                 <span class="original-price">$${formatCLP(product.price)}</span>
                 <span class="discounted-price">$${formatCLP(discountedPrice)}</span>
@@ -50,10 +52,13 @@ function renderProducts() {
         } else {
             pricesHtml = `<span class="discounted-price">$${formatCLP(product.price)}</span>`;
         }
-        if (product.stock === 0) {
+        if (product.price === 0) {
+            stockHtml = '';
+            buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Próximamente</button>';
+            imgClass = 'out-of-stock-img';
+        } else if (product.stock === 0) {
             stockHtml = '<div class="out-of-stock">Sin stock</div>';
             buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Agregar al carrito</button>';
-            imgClass = 'out-of-stock-img';
         } else {
             buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '">Agregar al carrito</button>';
         }
