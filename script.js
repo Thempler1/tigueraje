@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "3. la bahiiia ft nvizo & sando",
                 "4. NVC",
                 "5. lo que hubieramos sido",
-                "6. a todos lados! ft. white & stp",
+                "6. a todos lados! ft. white & stampida",
                 "7. tigueraje",
                 "8. malamemoria",
                 "9. q fue d tu gato",
