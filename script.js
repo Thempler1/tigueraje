@@ -17,11 +17,11 @@ const products = [
     },
     {
         id: 4,
-        title: "Entradas para : \"Los tigueres lloran, sienten y mienten\"",
+        title: "Próximamente Entradas para : \"Los tigueres lloran, sienten y mienten\"",
         price: 12500,
         discount: 0.2,
         image: "walu-concert.png",
-        stock: 1
+        stock: 0
     }
 ];
 
