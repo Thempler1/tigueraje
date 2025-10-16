@@ -5,7 +5,8 @@ const products = [
         price: 2990,
         discount: 0.0,
         image: "gomitas-walu.png",
-        stock: 0
+        stock: false,
+        proximamente: false
     },
     {
         id: 2,
@@ -13,15 +14,17 @@ const products = [
         price: 2990,
         discount: 0.0,
         image: "gomitas-tigueraje.png",
-        stock: 0
+        stock: false,
+        proximamente: false
     },
     {
         id: 4,
-        title: "Próximamente Entradas para : \"Los tigueres lloran, sienten y mienten\"",
+        title: "Entradas próximo show",
         price: 12500,
         discount: 0.2,
         image: "walu-concert.png",
-        stock: 0
+        stock: false,
+        proximamente: true
     }
 ];
 
@@ -41,8 +44,16 @@ function renderProducts() {
         let buttonHtml = '';
         let pricesHtml = '';
         let imgClass = '';
-        if (product.price === 0) {
+        if (product.proximamente) {
+            pricesHtml = '<span class="discounted-price">$???</span>';
+            stockHtml = '';
+            buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Próximamente</button>';
+            imgClass = 'out-of-stock-img';
+        } else if (product.price === 0) {
             pricesHtml = '';
+            stockHtml = '';
+            buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Próximamente</button>';
+            imgClass = 'out-of-stock-img';
         } else if (discountPercent > 0) {
             pricesHtml = `
                 <span class="original-price">$${formatCLP(product.price)}</span>
@@ -52,18 +63,19 @@ function renderProducts() {
         } else {
             pricesHtml = `<span class="discounted-price">$${formatCLP(product.price)}</span>`;
         }
-        if (product.price === 0) {
-            stockHtml = '';
-            buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Próximamente</button>';
-            imgClass = 'out-of-stock-img';
-        } else if (product.stock === 0) {
+        if (product.proximamente || product.price === 0) {
+            // ya está manejado arriba
+        } else if (!product.stock) {
             stockHtml = '<div class="out-of-stock">Sin stock</div>';
             buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '" disabled>Agregar al carrito</button>';
         } else {
             buttonHtml = '<button class="add-to-cart" data-id="' + product.id + '">Agregar al carrito</button>';
         }
         div.innerHTML = `
-            <img src="${product.image}" alt="${product.title}" class="${imgClass}">
+            <div style="position: relative; display: inline-block;">
+                <img src="${product.image}" alt="${product.title}" class="${imgClass}">
+                ${product.proximamente ? '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: #ff9800; padding: 0.5rem 1rem; border-radius: 8px; font-weight: bold; font-size: 0.9rem; text-align: center; z-index: 10;">PRÓXIMAMENTE</div>' : ''}
+            </div>
             <div class="product-title">${product.title}</div>
             <div class="product-prices">
                 ${pricesHtml}
