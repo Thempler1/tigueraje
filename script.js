@@ -201,6 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         } else {
+            // Ocultar el párrafo de introducción
+            const triviaIntro = document.getElementById('trivia-intro');
+            if (triviaIntro) {
+                triviaIntro.style.display = 'none';
+            }
             // Poll de 12 respuestas enumeradas
             const pollAnswers = [
                 "1. YOHJII",
