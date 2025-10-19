@@ -109,11 +109,28 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+body.no-scroll {
+  overflow: hidden;
+}
 main {
   flex: 1 0 auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+main.visible {
+  opacity: 1;
+  visibility: visible;
 }
 .footer {
   flex-shrink: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+.footer.visible {
+  opacity: 1;
+  visibility: visible;
 }
 .navbar {
     background: #22242c;
