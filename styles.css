@@ -1,3 +1,18 @@
+/* Sección de Instagram */
+.instagram-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+/* Clase para ocultar elementos al cambiar de sección */
+.section-hidden {
+  display: none !important;
+}
+
 /* Sección de trivia (solo para modal, no estilos de layout externo) */
 .trivia-section h1 {
   color: #f5a946ff;

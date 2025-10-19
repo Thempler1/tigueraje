@@ -17,32 +17,34 @@
         </ul>
     </nav>
     <main id="home">
-        <!-- Video de YouTube embebido -->
-        <h1 style="text-align: center;">Escucha lo nuevo del álbum 💽</h1>
-        <div class="youtube-responsive" style="text-align:center; margin:2rem 0;">
-            <iframe width="360" height="215" src="https://www.youtube.com/embed/6JYqHW5OcL8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <br>
-        <!-- Sección de Instagram -->
-        <h1 style="text-align: center;">Sintoniza las redes!</h1>
-        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem auto; max-width: 1200px;">
-            <div style="min-width: 300px; max-width: 600px; text-align: center;">
-                <p>Spoilers 👀</p>
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DP2C_qtjcoc/" data-instgrm-version="14" style="max-width: 100%;"></blockquote>
-            </div>
-            <div style="min-width: 300px; max-width: 600px; text-align: center;">
-              <p>Sígueme 📲</p>
-              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/walubb/" data-instgrm-version="14" style="max-width: 100%;"></blockquote>
-            </div> 
-        </div>
-        <!-- Sección del flyer del evento -->
-        <!--<h1>Próximos eventos</h1>
-        <div class="flyer-section">
-            <h1>Disfruta del disco en vivo y en directo</h1>
-            <img src="flyer-evento.jpg" alt="Flyer del evento" class="flyer-img">
-        </div> -->
-        <!-- Sección de productos -->
-        <section id="productos" style="display:none;">
+        <section id="inicio">
+          <!-- Video de YouTube embebido -->
+          <h1 style="text-align: center;">Escucha lo nuevo del álbum 💽</h1>
+          <div class="youtube-responsive" style="text-align:center; margin:2rem 0;">
+              <iframe width="360" height="215" src="https://www.youtube.com/embed/6JYqHW5OcL8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <br>
+          <!-- Sección de Instagram -->
+          <h1 style="text-align: center;">Sintoniza las redes!</h1>
+          <div id="instagram-section" class="instagram-section">
+              <div style="min-width: 300px; max-width: 600px; text-align: center;">
+                  <p>Spoilers 👀</p>
+                  <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DP2C_qtjcoc/" data-instgrm-version="14" style="max-width: 100%;"></blockquote>
+              </div>
+              <div style="min-width: 300px; max-width: 600px; text-align: center;">
+                <p>Sígueme 📲</p>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/walubb/" data-instgrm-version="14" style="max-width: 100%;"></blockquote>
+              </div> 
+          </div>
+          <!-- Sección del flyer del evento -->
+          <!--<h1>Próximos eventos</h1>
+          <div class="flyer-section">
+              <h1>Disfruta del disco en vivo y en directo</h1>
+              <img src="flyer-evento.jpg" alt="Flyer del evento" class="flyer-img">
+          </div> -->
+          <!-- Sección de productos -->
+        </section>
+        <section id="productos" class="section-hidden">
             <h1>Productos</h1>
             <div class="product-list" id="product-list">
                 <!-- Productos se renderizan aquí -->
@@ -91,56 +93,6 @@
       <div class="footer-bottom">&copy; 2025 Tigueraje & Glomour. Todos los derechos reservados.<br><span class="footer-designer">web by <a href="https://www.instagram.com/uzar.tags/" target="_blank" rel="noopener">@uzar.tags</a> 🖍️</span></div>
     </footer>
     <script src="script.js"></script>
-    <script>
-    // Mostrar/Ocultar sección productos
-    const productosBtn = document.getElementById('productos-btn');
-    const productosSection = document.getElementById('productos');
-    const mainHome = document.getElementById('home');
-
-    productosBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Oculta todo menos productos
-      Array.from(mainHome.children).forEach(child => {
-        if(child !== productosSection) child.style.display = 'none';
-      });
-      productosSection.style.display = '';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    // Al hacer click en Inicio, mostrar todo menos productos
-    const inicioBtn = document.querySelector('.nav-links a[href="#home"]');
-    inicioBtn.addEventListener('click', function(e) {
-      Array.from(mainHome.children).forEach(child => {
-        if(child !== productosSection) child.style.display = '';
-      });
-      productosSection.style.display = 'none';
-    });
-    window.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('trivia-modal');
-      const closeBtn = document.getElementById('trivia-close');
-      const mainHome = document.getElementById('home');
-      const footer = document.querySelector('.footer');
-      const body = document.body;
-      
-      setTimeout(() => { 
-        modal.style.display = 'flex';
-        body.classList.add('no-scroll'); // Bloquear scroll cuando se abre el modal
-      }, 600);
-      
-      function closeTrivia() {
-        modal.style.display = 'none';
-        body.classList.remove('no-scroll'); // Desbloquear scroll cuando se cierra el modal
-        
-        // Activar la transición de opacidad y visibilidad
-        setTimeout(() => {
-          mainHome.classList.add('visible');
-          footer.classList.add('visible');
-        }, 100);
-      }
-      
-      closeBtn.onclick = closeTrivia;
-      modal.onclick = (e) => { if (e.target === modal) closeTrivia(); };
-    });
-    </script>
     <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>

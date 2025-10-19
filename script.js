@@ -30,6 +30,11 @@ const products = [
 
 const cart = [];
 
+// Variables globales para navegación
+let productosBtn, productosSection, inicioSection, inicioBtn;
+
+// ===== FUNCIONES DE PRODUCTOS Y CARRITO =====
+
 function renderProducts() {
     const list = document.getElementById('product-list');
     list.innerHTML = '';
@@ -132,57 +137,35 @@ function addToCart(productId) {
     updateCartCount();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
-    updateCartCount();
+// ===== FUNCIONES DE NAVEGACIÓN =====
 
-    document.getElementById('product-list').addEventListener('click', e => {
-        if (e.target.classList.contains('add-to-cart')) {
-            const id = parseInt(e.target.getAttribute('data-id'));
-            addToCart(id);
-            renderCartItems(); // Actualiza el carrito en tiempo real
-        }
-    });
+// Función optimizada para refrescar los embeds de Instagram
+function refreshInstagramEmbeds() {
+    if (window.instgrm?.Embeds) {
+        window.instgrm.Embeds.process();
+    }
+    
+    // Optimización: solo buscar embeds si están visibles
+    if (!inicioSection.classList.contains('section-hidden')) {
+        const instagramEmbeds = document.querySelectorAll('.instagram-media');
+        instagramEmbeds.forEach(embed => {
+            embed.style.display = 'none';
+            embed.offsetHeight; // Trigger reflow
+            embed.style.display = '';
+        });
+    }
+}
 
-    document.getElementById('cart-btn').addEventListener('click', e => {
-        e.preventDefault();
-        showCart();
-    });
-    document.getElementById('close-cart').addEventListener('click', hideCart);
+// Función para cambiar secciones de manera optimizada
+function switchSection(showSection, hideSection) {
+    hideSection.classList.add('section-hidden');
+    showSection.classList.remove('section-hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    document.getElementById('cart-modal').addEventListener('click', e => {
-        if (e.target === document.getElementById('cart-modal')) {
-            hideCart();
-        }
-    });
+// ===== FUNCIONES DE TRIVIA =====
 
-    // Eliminar productos del carrito
-    document.getElementById('cart-items').addEventListener('click', e => {
-        if (e.target.classList.contains('remove-from-cart')) {
-            const id = parseInt(e.target.getAttribute('data-id'));
-            const idx = cart.findIndex(i => i.id === id);
-            if (idx !== -1) {
-                if (cart[idx].qty > 1) {
-                    cart[idx].qty--;
-                } else {
-                    cart.splice(idx, 1);
-                }
-                updateCartCount();
-                renderCartItems();
-            }
-        }
-    });
-
-    // Botón de checkout
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert('El carrito está vacío. Agrega productos antes de continuar.');
-        } else {
-            window.location.href = 'https://www.ecopass.cl/';
-        }
-    });
-
-    // Trivia
+function initTrivia() {
     const triviaQuestions = [
         {
             question: "¿Los tigueres lloran?",
@@ -246,9 +229,110 @@ document.addEventListener('DOMContentLoaded', () => {
             showTriviaQuestion(triviaIndex);
         }
     });
+}
 
-    document.querySelector('.nav-links a[href="#home"]').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+// ===== INICIALIZACIÓN =====
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar variables globales
+    productosBtn = document.getElementById('productos-btn');
+    productosSection = document.getElementById('productos');
+    inicioSection = document.getElementById('inicio');
+    inicioBtn = document.querySelector('.nav-links a[href="#home"]');
+
+    // Inicializar productos y carrito
+    renderProducts();
+    updateCartCount();
+
+    // Event listeners para productos y carrito
+    document.getElementById('product-list').addEventListener('click', e => {
+        if (e.target.classList.contains('add-to-cart')) {
+            const id = parseInt(e.target.getAttribute('data-id'));
+            addToCart(id);
+            renderCartItems(); // Actualiza el carrito en tiempo real
+        }
     });
+
+    document.getElementById('cart-btn').addEventListener('click', e => {
+        e.preventDefault();
+        showCart();
+    });
+    
+    document.getElementById('close-cart').addEventListener('click', hideCart);
+
+    document.getElementById('cart-modal').addEventListener('click', e => {
+        if (e.target === document.getElementById('cart-modal')) {
+            hideCart();
+        }
+    });
+
+    // Eliminar productos del carrito
+    document.getElementById('cart-items').addEventListener('click', e => {
+        if (e.target.classList.contains('remove-from-cart')) {
+            const id = parseInt(e.target.getAttribute('data-id'));
+            const idx = cart.findIndex(i => i.id === id);
+            if (idx !== -1) {
+                if (cart[idx].qty > 1) {
+                    cart[idx].qty--;
+                } else {
+                    cart.splice(idx, 1);
+                }
+                updateCartCount();
+                renderCartItems();
+            }
+        }
+    });
+
+    // Botón de checkout
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('El carrito está vacío. Agrega productos antes de continuar.');
+        } else {
+            window.location.href = 'https://www.ecopass.cl/';
+        }
+    });
+
+    // Event listeners para navegación entre secciones
+    productosBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        switchSection(productosSection, inicioSection);
+    });
+    
+    inicioBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        switchSection(inicioSection, productosSection);
+        setTimeout(refreshInstagramEmbeds, 100);
+    });
+
+    // Inicializar trivia
+    initTrivia();
+
+    // Modal de trivia
+    const modal = document.getElementById('trivia-modal');
+    const closeBtn = document.getElementById('trivia-close');
+    const mainHome = document.getElementById('home');
+    const footer = document.querySelector('.footer');
+    const body = document.body;
+    
+    // Función para cerrar trivia
+    function closeTrivia() {
+        modal.style.display = 'none';
+        body.classList.remove('no-scroll');
+        
+        setTimeout(() => {
+            mainHome.classList.add('visible');
+            footer.classList.add('visible');
+            setTimeout(refreshInstagramEmbeds, 200);
+        }, 100);
+    }
+    
+    // Mostrar modal después de carga
+    setTimeout(() => { 
+        modal.style.display = 'flex';
+        body.classList.add('no-scroll');
+    }, 600);
+    
+    // Event listeners del modal
+    closeBtn.onclick = closeTrivia;
+    modal.onclick = (e) => { if (e.target === modal) closeTrivia(); };
 });
