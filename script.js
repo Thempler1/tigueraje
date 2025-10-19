@@ -1,6 +1,15 @@
 const products = [
     {
         id: 1,
+        title: "Entradas próximo show",
+        price: 12500,
+        discount: 0.2,
+        image: "walu-concert.png",
+        stock: false,
+        proximamente: true
+    },
+    {
+        id: 2,
         title: "Gomitas sabor Walu",
         price: 2990,
         discount: 0.0,
@@ -9,7 +18,7 @@ const products = [
         proximamente: false
     },
     {
-        id: 2,
+        id: 3,
         title: "Gomitas Tigueraje",
         price: 2990,
         discount: 0.0,
@@ -17,15 +26,7 @@ const products = [
         stock: false,
         proximamente: false
     },
-    {
-        id: 4,
-        title: "Entradas próximo show",
-        price: 12500,
-        discount: 0.2,
-        image: "walu-concert.png",
-        stock: false,
-        proximamente: true
-    }
+
 ];
 
 const cart = [];
@@ -204,17 +205,16 @@ function initTrivia() {
             // Poll de 12 respuestas enumeradas
             const pollAnswers = [
                 "1. YOHJII",
-                "2. nadiecomotuuU",
+                "2. nadiecomotu",
                 "3. la bahiiia ft nvizo & sando",
-                "4. NVC",
+                "4. nvc",
                 "5. lo que hubieramos sido",
-                "6. a todos lados! ft. white & stampida",
+                "6. a todos lados! ft. White & Stampida",
                 "7. tigueraje",
                 "8. malamemoria",
-                "9. q fue d tu gato",
-                "10. hacerloOoOo ʚ(｡˃ ᵕ ˂ )ɞ ft stampida",
-                "11. aaazotarle",
-                "12. aterrizaje d emergencia"
+                "9. hacerloOoOo ʚ(｡˃ ᵕ ˂ )ɞ ft Stampida",
+                "10. aaazotarle",
+                "11. aterrizaje d emergencia"
             ];
             const randomIndex = Math.floor(Math.random() * pollAnswers.length);
             triviaContainer.innerHTML = `<div class=\"trivia-end\"><div style=\"margin-bottom:0.7rem;font-weight:800;color:#f5a946ff;\">Tu canción será</div>${pollAnswers[randomIndex]}</div>`;
