@@ -154,7 +154,7 @@ main.visible {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
     z-index: 2000;
@@ -421,6 +421,7 @@ main {
 /* Estilos para el footer */
 .footer {
   background: #22242c;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
   color: #e0e6ed;
   padding: 2rem 0 1rem 0;
   margin-top: 2rem;
