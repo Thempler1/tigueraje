@@ -217,7 +217,11 @@ function initTrivia() {
                 "11. aterrizaje d emergencia"
             ];
             const randomIndex = Math.floor(Math.random() * pollAnswers.length);
-            triviaContainer.innerHTML = `<div class=\"trivia-end\"><div style=\"margin-bottom:0.7rem;font-weight:800;color:#f5a946ff;\">Tu canción será</div>${pollAnswers[randomIndex]}</div>`;
+            const triviaEndDiv = document.createElement('div');
+            triviaEndDiv.className = 'trivia-end fade-in';
+            triviaEndDiv.innerHTML = `<div style="margin-bottom:0.7rem;font-weight:800;color:#f5a946ff;">Tu canción será</div><div style="font-size:1.1rem;color:#f5a946ff;">${pollAnswers[randomIndex]}</div>`;
+            triviaContainer.innerHTML = '';
+            triviaContainer.appendChild(triviaEndDiv);
         }
     }
 
