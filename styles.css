@@ -145,6 +145,8 @@ body {
   background: 
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url('waludisco.jpg') center/cover no-repeat fixed;
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
   color: #e0e6ed;
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
