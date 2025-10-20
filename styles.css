@@ -157,6 +157,8 @@ body {
 }
 body.no-scroll {
   overflow: hidden;
+  background-attachment: fixed;
+  -webkit-background-attachment: fixed;
 }
 main {
   flex: 1 0 auto;
