@@ -147,6 +147,7 @@ body {
     url('waludisco.jpg') center/cover no-repeat fixed;
   background-attachment: fixed;
   -webkit-background-attachment: fixed;
+  background-color: #22242c;
   color: #e0e6ed;
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
