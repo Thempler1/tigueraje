@@ -156,9 +156,9 @@ body {
   min-height: 100vh;
 }
 body.no-scroll {
-  overflow: hidden;
-  background-attachment: fixed;
-  -webkit-background-attachment: fixed;
+  overflow: hidden !important;
+  background-attachment: fixed !important;
+  -webkit-background-attachment: fixed !important;
 }
 main {
   flex: 1 0 auto;
@@ -393,11 +393,18 @@ main {
 .trivia-modal {
   display: none;
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(24,26,32,0.85);
   justify-content: center;
   align-items: center;
   z-index: 3000;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
 }
 .trivia-content {
   background: #22242c;

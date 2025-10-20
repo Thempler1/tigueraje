@@ -322,6 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeTrivia() {
         modal.style.display = 'none';
         body.classList.remove('no-scroll');
+        document.documentElement.style.position = '';
+        document.documentElement.style.height = '';
+        document.documentElement.style.width = '';
+        document.documentElement.style.overflow = '';
         
         setTimeout(() => {
             mainHome.classList.add('visible');
@@ -334,6 +338,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => { 
         modal.style.display = 'flex';
         body.classList.add('no-scroll');
+        // Para Safari: fijar el html también
+        document.documentElement.style.position = 'fixed';
+        document.documentElement.style.height = '100%';
+        document.documentElement.style.width = '100%';
+        document.documentElement.style.overflow = 'hidden';
     }, 600);
     
     // Event listeners del modal
