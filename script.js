@@ -238,6 +238,23 @@ function initTrivia() {
 // ===== INICIALIZACIÓN =====
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Fijar el fondo para evitar movimiento en móviles
+    const bgOverlay = document.querySelector('.background-overlay');
+    if (bgOverlay) {
+        const viewportHeight = window.innerHeight;
+        const viewportWidth = window.innerWidth;
+        const isMobile = window.innerWidth <= 600;
+        
+        // Zoom mayor en móviles (60% extra) vs desktop (20% extra)
+        const scale = isMobile ? 1.6 : 1.2;
+        const offset = isMobile ? 0.3 : 0.1;
+        
+        bgOverlay.style.height = (viewportHeight * scale) + 'px';
+        bgOverlay.style.width = (viewportWidth * scale) + 'px';
+        bgOverlay.style.top = (-viewportHeight * offset) + 'px';
+        bgOverlay.style.left = (-viewportWidth * offset) + 'px';
+    }
+
     // Inicializar variables globales
     productosBtn = document.getElementById('productos-btn');
     productosSection = document.getElementById('productos');
@@ -329,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         setTimeout(() => {
             mainHome.classList.add('visible');
-            footer.classList.add('visible');
+            // No agregar visible al footer aquí - el Intersection Observer lo manejará
             setTimeout(refreshInstagramEmbeds, 200);
         }, 100);
     }
@@ -348,4 +365,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners del modal
     closeBtn.onclick = closeTrivia;
     modal.onclick = (e) => { if (e.target === modal) closeTrivia(); };
+
+    // Intersection Observer para el footer
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                footer.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1 // Se activa cuando el 10% del footer es visible
+    });
+
+    // Observar el footer
+    footerObserver.observe(footer);
 });

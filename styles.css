@@ -141,20 +141,47 @@ h1, h2 {
 .checkout-btn:hover {
   background: #f4752cff;
 }
+html {
+  background: #22242c;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
 body {
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url('waludisco.jpg') center/cover no-repeat fixed;
-  background-attachment: fixed;
-  -webkit-background-attachment: fixed;
-  background-color: #22242c;
   color: #e0e6ed;
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.background-overlay {
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('waludisco.jpg') center center no-repeat;
+  background-size: cover;
+  z-index: -1;
+  pointer-events: none;
+  will-change: contents;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 body.no-scroll {
   overflow: hidden !important;
@@ -166,6 +193,7 @@ main {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  padding-top: 80px;
 }
 main.visible {
   opacity: 1;
@@ -173,13 +201,6 @@ main.visible {
 }
 .footer {
   flex-shrink: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-}
-.footer.visible {
-  opacity: 1;
-  visibility: visible;
 }
 .navbar {
     background: #22242c;
@@ -188,9 +209,15 @@ main.visible {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    padding-top: calc(1rem + env(safe-area-inset-top));
+    padding-left: calc(2rem + env(safe-area-inset-left));
+    padding-right: calc(2rem + env(safe-area-inset-right));
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 2000;
 }
 .logo {
@@ -375,6 +402,7 @@ main {
     }
     main {
         padding: 1rem;
+        padding-top: 140px;
     }
     .cart-modal {
        justify-content: center;
@@ -467,6 +495,13 @@ main {
   padding: 2rem 0 1rem 0;
   margin-top: 2rem;
   font-size: 1rem;
+  position: relative;
+  z-index: 1;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 .footer-content {
   display: flex;
@@ -534,5 +569,14 @@ main {
   .footer {
     font-size: 0.98rem;
     padding: 1.2rem 0 0.7rem 0;
+    position: relative;
+    overflow: hidden;
+    contain: layout style paint;
+  }
+  .background-overlay {
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
   }
 }
