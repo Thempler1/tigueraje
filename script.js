@@ -31,6 +31,9 @@ const products = [
 
 const cart = [];
 
+// Variable para activar/desactivar el modal de trivia al cargar la página
+const MOSTRAR_MODAL_TRIVIA = true; // Cambiar a false para desactivar el modal
+
 // Variables globales para navegación
 let productosBtn, productosSection, inicioSection, inicioBtn;
 
@@ -238,22 +241,16 @@ function initTrivia() {
 // ===== INICIALIZACIÓN =====
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Fijar el fondo para evitar movimiento en móviles
-    const bgOverlay = document.querySelector('.background-overlay');
-    if (bgOverlay) {
-        const viewportHeight = window.innerHeight;
-        const viewportWidth = window.innerWidth;
-        const isMobile = window.innerWidth <= 600;
-        
-        // Zoom mayor en móviles (60% extra) vs desktop (20% extra)
-        const scale = isMobile ? 1.6 : 1.2;
-        const offset = isMobile ? 0.3 : 0.1;
-        
-        bgOverlay.style.height = (viewportHeight * scale) + 'px';
-        bgOverlay.style.width = (viewportWidth * scale) + 'px';
-        bgOverlay.style.top = (-viewportHeight * offset) + 'px';
-        bgOverlay.style.left = (-viewportWidth * offset) + 'px';
-    }
+    // Hacer aparecer el fondo gradualmente cuando todo esté cargado
+    window.addEventListener('load', () => {
+        const bgOverlay = document.querySelector('.background-overlay');
+        if (bgOverlay) {
+            // Esperar un pequeño delay para asegurar que todo esté renderizado
+            setTimeout(() => {
+                bgOverlay.classList.add('loaded');
+            }, 100);
+        }
+    });
 
     // Inicializar variables globales
     productosBtn = document.getElementById('productos-btn');
@@ -351,16 +348,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
     
-    // Mostrar modal después de carga
-    setTimeout(() => { 
-        modal.style.display = 'flex';
-        body.classList.add('no-scroll');
-        // Para Safari: fijar el html también
-        document.documentElement.style.position = 'fixed';
-        document.documentElement.style.height = '100%';
-        document.documentElement.style.width = '100%';
-        document.documentElement.style.overflow = 'hidden';
-    }, 600);
+    // Mostrar modal después de carga (solo si está activado)
+    if (MOSTRAR_MODAL_TRIVIA) {
+        setTimeout(() => { 
+            modal.style.display = 'flex';
+            body.classList.add('no-scroll');
+            // Para Safari: fijar el html también
+            document.documentElement.style.position = 'fixed';
+            document.documentElement.style.height = '100%';
+            document.documentElement.style.width = '100%';
+            document.documentElement.style.overflow = 'hidden';
+        }, 600);
+    } else {
+        // Si el modal no se muestra, hacer visible el contenido principal inmediatamente
+        setTimeout(() => {
+            mainHome.classList.add('visible');
+        }, 100);
+    }
     
     // Event listeners del modal
     closeBtn.onclick = closeTrivia;
