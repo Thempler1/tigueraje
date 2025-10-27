@@ -139,6 +139,21 @@ function addToCart(productId) {
         cart.push({ ...product, qty: 1 });
     }
     updateCartCount();
+    
+    // Agregar animación al carrito con debug
+    const cartBtn = document.getElementById('cart-btn');
+    console.log('CartBtn encontrado:', cartBtn); // Debug
+    
+    if (cartBtn) {
+        cartBtn.classList.add('cart-bounce');
+        console.log('Clase cart-bounce agregada'); // Debug
+        
+        // Remover la clase después de la animación
+        setTimeout(() => {
+            cartBtn.classList.remove('cart-bounce');
+            console.log('Clase cart-bounce removida'); // Debug
+        }, 900);
+    }
 }
 
 // ===== FUNCIONES DE NAVEGACIÓN =====

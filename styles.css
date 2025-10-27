@@ -36,6 +36,35 @@ h1, h2 {
   }
 }
 
+/* Animación para el carrito */
+@keyframes cartBounce {
+  0% {
+    transform: scale(1) !important;
+    font-size: inherit;
+  }
+  50% {
+    transform: scale(1.5) !important;
+    font-size: 1.2em;
+    color: #f4752cff;
+  }
+  100% {
+    transform: scale(1) !important;
+    font-size: inherit;
+  }
+}
+
+@keyframes cartShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+
 .fade-in {
   animation: fadeIn 0.6s ease-in;
 }
@@ -275,6 +304,17 @@ main.visible {
 }
 .nav-links a:hover {
     color: #f5a946ff;
+}
+
+/* Estilos para animación del carrito */
+#cart-btn {
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+#cart-btn.cart-bounce {
+    animation: cartBounce 0.6s ease-in-out;
+    color: #f4752cff !important;
+    transform-origin: center !important;
 }
 main {
     padding: 2rem;
