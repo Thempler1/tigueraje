@@ -271,6 +271,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Event listener para el botón del flyer
+    document.querySelector('.flyer-section').addEventListener('click', e => {
+        if (e.target.classList.contains('add-to-cart')) {
+            const id = parseInt(e.target.getAttribute('data-id'));
+            addToCart(id);
+            renderCartItems(); // Actualiza el carrito en tiempo real
+        }
+    });
+
     document.getElementById('cart-btn').addEventListener('click', e => {
         e.preventDefault();
         showCart();
