@@ -5,8 +5,8 @@ const products = [
         price: 12500,
         discount: 0.2,
         image: "walu-concert.png",
-        stock: false,
-        proximamente: true
+        stock: true,
+        proximamente: false
     },
     {
         id: 2,
