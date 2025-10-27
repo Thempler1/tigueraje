@@ -4,7 +4,7 @@ const products = [
         title: "Entrada: Walu - Primer Show en Solitario",
         price: 4000,
         discount: 0.0,
-        image: "walu-concert.png",
+        image: "walu-concert-2.png",
         stock: true,
         proximamente: false
     },
