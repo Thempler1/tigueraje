@@ -2,7 +2,7 @@ const products = [
     {
         id: 1,
         title: "Entradas próximo show",
-        price: 3000,
+        price: 4000,
         discount: 0.0,
         image: "walu-concert.png",
         stock: true,
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart.length === 0) {
             alert('El carrito está vacío. Agrega productos antes de continuar.');
         } else {
-            window.location.href = 'https://www.ecopass.cl/';
+            window.location.href = 'https://www.ecopass.cl/events/walu-primer-show-en-solitario/16248?';
         }
     });
 
