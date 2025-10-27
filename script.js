@@ -2,8 +2,8 @@ const products = [
     {
         id: 1,
         title: "Entradas próximo show",
-        price: 12500,
-        discount: 0.2,
+        price: 3000,
+        discount: 0.0,
         image: "walu-concert.png",
         stock: true,
         proximamente: false
