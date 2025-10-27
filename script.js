@@ -1,7 +1,7 @@
 const products = [
     {
         id: 1,
-        title: "Entradas próximo show",
+        title: "Entrada: Walu - Primer Show en Solitario",
         price: 4000,
         discount: 0.0,
         image: "walu-concert.png",
